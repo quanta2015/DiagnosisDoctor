@@ -1,0 +1,177 @@
+body {
+	font: 12px/1.5 "微软雅黑";
+}
+
+
+.login-text {
+    width: 300px;
+    font-size: 16px;
+    height: 36px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-family: tahoma,arial,sans-serif;
+    float: left;
+}
+
+.forget-pwd {
+	float: left;
+}
+
+.register {
+	float: right;
+}
+
+.btn-regist {
+	width: 160px;
+    height: 36px;
+    border: 0;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: #f40;
+    border-radius: 3px;
+    cursor: pointer;
+    zoom: 1;
+    margin: 15px 0 0 0;
+}
+
+.reg-Logo {
+    display: block;
+    width: 220px;
+    height: 70px;
+    float: left;
+    cursor: pointer;
+    background: url("../../img/regist-logo.png") no-repeat;
+    
+}
+
+.logoCell {
+    border-bottom: 1px solid #eee;
+    margin: 10px;
+    padding: 0px 5px 20px 5px;
+}
+
+.logoCell span {
+    font: normal 18px/18px "microsoft yahei",arial,sans-serif;
+    padding-left: 10px;
+    float: left;
+    padding-top: 45px;
+}
+
+.fieldname {
+    position: relative;
+    float: left;
+    padding: 8px 0 0 0;
+    font:16px/1.3 "microsoft yahei";
+    color: #999;
+}
+
+.fieldname span {
+    float: right
+}
+
+.container-fluid .row {
+    margin-bottom: 20px;
+}
+
+
+.note {
+    display: inline-block;
+    margin: 10px 0 0 10px;
+    padding-left: 20px;
+    color: #ff9261;
+    float: left;
+}
+
+.noteErr {
+    
+    background: url("../../img/icon-error.png") no-repeat;
+}
+
+.noteOk {
+    background: url("../../img/icon-ok.png") no-repeat;
+}
+
+.successInfo {
+    border: 2px #eee solid;
+    height: 120px;
+    margin: 0;
+    padding: 0;
+}
+
+.row-info {
+    display: none;
+}
+
+.regSuccessLogo {
+    display: block;
+    background: url("../../img/icon-reg-success.png") no-repeat;
+    height: 32px;
+    width: 32px;
+    margin: 25px 0 30px 30px;
+    float: left;
+}
+
+.regSuccessInfo {
+    display: block;
+    float: left;
+    margin: 25px 0 0 30px;
+    font:14px/1.3 "microsoft yahei";
+}
+
+.regSuccessUrl {
+    display: block;
+    float: left;
+    font:14px/1.3 "microsoft yahei";
+    margin: 15px 0 0 30px;
+}
+
+.regMenu {
+    background: #eee;
+    height: 28px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f5f5f5;
+    padding: 5px;
+}
+
+.regCell {
+    float: right;
+    margin: 0 20px 0 0;
+    font:12px/1.5 "microsoft yahei";
+    color: #000;
+}
+
+.regCell:hover {
+    color: #ff9900;
+}
+
+.wide100 {
+    width: 100px;
+}
+
+.btn-code {
+    border: 1px solid #ddd;
+    height: 36px;
+    background: #f7f7f7;
+    color: #666;
+    font-weight: normal;
+    width: 180px;
+    font-size: 14px;
+    float: left;
+    margin: 0 0 0 20px;
+    outline: 0;
+}
+
+.btn-code:hover{
+    background: #f0f0f0;
+}
+
+input.input-disabled {
+    background: #f6f6f6;
+    border-color: #ebebeb;
+    color: #c5c5c5;
+}

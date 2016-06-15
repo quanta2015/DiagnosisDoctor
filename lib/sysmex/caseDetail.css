@@ -1,0 +1,208 @@
+#tabs .content, #tabs .detail {
+	background: #fefefe;
+	margin: 0;
+	padding: 0;
+}
+
+.row-txt {
+    margin: 20px 20px 0 20px;
+    background: #666;
+    padding: 5px;
+}
+
+.row-res {
+    margin: 0 20px 0 20px;
+    background: #efefef;
+    padding: 3px;
+}
+
+.row-res:nth-child(2n) {
+    background-color: #fff;
+}
+
+.row-res label {
+    margin: 0;
+    color: #666;
+    font: 12px/1 "Microsoft Yahei";
+}
+
+.row-txt label {
+    margin: 0;
+    color: #fff;
+    font: 14px/1 "Microsoft Yahei";
+}
+
+.row-title{
+	margin: 0;
+	padding: 0;
+	height: 40px;
+}
+
+.row-btn {
+    padding: 20px 0 20px 0;
+    text-align: center;
+    margin: 10px 20px 20px 20px;
+    border-top: 1px solid #efefef;
+
+}
+
+.row-info{
+    margin: 0px 20px 0 20px;
+    padding: 0;
+}
+
+.row-img,.row-micro  {
+	margin: 15px 20px 0 20px;
+	padding: 0;
+}
+
+.title,.content {
+	margin: 0;
+	padding: 0;
+}
+
+.row-title span, .row-title label {
+    font: 20px/1 "Microsoft YaHei";
+    color: #fff;
+    display: block;
+    margin: 10px 10px;
+}
+
+
+.row-info span,.row-img span, .row-micro span {
+    font: 16px/1.5 "Microsoft YaHei";
+    float: right;
+    color: #666666;
+    margin: 8px;
+}
+
+.row-info label {
+	font: 16px/1.5 "Microsoft YaHei";
+    float: left;
+	color: #aaa;
+	margin: 8px;
+}
+
+.imgThumb {
+    width: 60px;
+    height: 60px;
+    background: #aaa;
+    float: left;
+    margin: 0 10px 5px 0;
+    position: relative;
+    text-align: center;
+}
+
+.imgThumb img {
+    height: 60px;
+    width: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    display: inline;
+    cursor: pointer;
+    outline:  1px solid #aaaaaa;
+}
+
+.fn-sepline {
+	border-bottom: 1px solid #efefef;
+	padding-bottom:10px;
+}
+
+.layerBtn {
+    width: 80px;
+    height: 32px;
+    background: #ff9900;
+    padding: 5px 20px;
+    margin: 0 5px;
+    font: 16px/2 "微软雅黑";
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+
+.imgThumbLg {
+    width: 80px;
+    height: 80px;
+    background: green;
+    float: left;
+    margin: 0 10px 10px 0;
+   position: relative;
+   text-align: center;
+}
+
+.imgThumbLg img {
+    height: 80px;
+    width: 80px;
+    display: inline;
+}
+
+.imgThumbLg .del {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    right: -8px;
+    top: -8px;
+    background: url("../../img/icon-close.png") no-repeat;
+    display: none;
+    cursor: pointer;
+}
+
+.imgThumbLg .t-type {
+    display: block;
+    background: #ff9900;
+    font: 12px/1.6 "Microsoft YaHei";
+    padding: 0 5px 0 5px;
+    color: #fff;
+    width: 40px;
+    height: 20px;
+    float: left;
+}
+
+.imgThumbLg .t-rate {
+    position: relative;
+    height: 20px;
+    font: 12px/1.6 "Microsoft YaHei";
+    width: 40px;
+    float: right;
+    color: #fff;
+}
+
+
+#tabs, #tabs ul {
+    border-radius: 0;
+    background:#fff;
+    border:0;
+}
+
+#tabs ul {
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #83af56;
+}
+
+#tabs li {
+    padding-bottom: 0;
+    background: #fff;
+    border-color: #99cc66;
+    background: #ddffbc;
+}
+
+#tabs li a{
+    color:#2e5b01;
+    font:14px/1 "Microsoft Yahei";
+}
+
+#tabs .ui-tabs-active {
+    background: #fff;
+}
+
+#tabs .ui-widget-content {
+    background: #fff;
+}
+
+.fn-center {
+    text-align: center;
+}

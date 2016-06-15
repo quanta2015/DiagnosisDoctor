@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加病理</title>
+
+    <link href="lib/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/layer/layer.css" rel="stylesheet" />
+    <link href="lib/layer/layer.ext.css" rel="stylesheet" />
+    <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
+    <link href="lib/fancyBox/jquery.fancybox.css" rel="stylesheet">
+    <link href="lib/sysmex/common.css" rel="stylesheet">
+    <link href="lib/sysmex/intgList.css" rel="stylesheet">
+    
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery-ui.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/fancyBox/jquery.fancybox.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/jsrender/jsrender.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="lib/layer/layer.ext.js"></script>
+    <script src="lib/alertify/alertify.min.js"></script>
+    <script src="lib/sysmex/common.js"></script>
+    <script src="lib/sysmex/intgList.js"></script>
+  </head>
+  
+  <body>
+      <div class="container-fluid result">
+        
+        
+
+        <div class="row row-result" >
+          <div class="col-md-12 f_title">
+            <span>综合诊断意见</span>
+          </div>
+        </div>
+        <div class="row row-input" >
+          <div class="col-md-12 f_title">
+            <textarea rows="5" id="diagTxt"></textarea>
+          </div>
+        </div>
+
+        <div class="row row-btn">
+          <a class="layerBtn" id="cancel">返 回</a>
+          <a class="layerBtn" id="confirm">提 交</a>
+        </div>
+
+      </div>
+  </body>
+
+
+<script id="expertTmpl" type="text/x-jsrender">
+  <div class="row row-title" >
+    <div class="col-md-2 f_title">
+      <span>{{:username}}</span>
+    </div>
+    <div class="col-md-4 f_title">
+      <span>{{:companyname}}</span>
+    </div>
+    <div class="col-md-2 f_title">
+      <span>{{:position}}/{{:title}}</span>
+    </div>
+    <div class="col-md-2 f_title">
+      <span>{{:type}}专家</span>
+    </div>
+    <div class="col-md-2 f_title">
+      <span>{{:field}}</span>
+    </div>   
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-result">
+      <p class="txt">{{:diagResult}}</p>
+    </div>   
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-crop">
+      <p></p>
+      {{:cropStr}}
+    </div>   
+  </div>
+</script>

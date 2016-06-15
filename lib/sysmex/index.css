@@ -1,0 +1,78 @@
+html,body {
+	height: 100%;
+}
+
+iframe{
+	width: 100%;
+	border: 0;
+}
+
+.bar {
+	height: 50px;
+	background: #3399cc;
+	border-bottom: 1px solid #aaa;
+}
+
+.bar label{
+	height: 100%;
+	font: 16px/1.5 "微软雅黑";
+	color:#fff;
+	float: left;
+	margin: 15px 0 0 5px;
+}
+
+.bar-menu label {
+    font: 14px/1 "微软雅黑";
+    color: #ff3366;
+    float: left;
+    margin: 5px 20px 0 0;
+    font-weight: bold;
+}
+
+.bar .row {
+	height: 100%;
+}
+
+.bar-logo {
+	height: 100%;
+}
+
+.bar-title {
+	
+}
+
+.bar-menu ul {
+	margin: 20px 0 0 0;
+	padding: 0;
+	float: right;
+}
+
+.bar-menu li {
+	margin: 5px 10px;
+	list-style: none;
+	float: left;
+	font: 14px/1 "Microsoft YaHei";
+	color:#fff;
+	cursor: pointer;
+}
+
+.bar-menu li:hover {
+	color: #f3a205;
+}
+
+#imgLogo {
+		background: url("../../img/logo.png")  no-repeat;
+		height: 30px;
+		width: 60px;
+		float: left;
+		margin: 5px;
+}
+
+#username {
+	margin: 5px 5px 0 0;
+	color: #fff;
+}
+
+body {
+	overflow: hidden;
+}

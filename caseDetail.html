@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>病理详单</title>
+
+    <link href="lib/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/font/css/font-awesome.min.css" rel="stylesheet" >
+    <link href="lib/pagination/jquery.pagination.css" rel="stylesheet">
+    <link href="lib/layer/layer.css" rel="stylesheet" />
+    <link href="lib/layer/layer.ext.css" rel="stylesheet" />
+    <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
+    <link href="lib/fancyBox/jquery.fancybox.css" rel="stylesheet">
+    <link href="lib/sysmex/caseDetail.css" rel="stylesheet">
+     <link href="lib/sysmex/common.css" rel="stylesheet">
+      <style>
+		a:hover { 
+			color:#337ab7; 
+		} 
+
+    </style>
+
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery-ui.js"></script>
+    <script src="lib/fancyBox/jquery.fancybox.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/jsrender/jsrender.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="lib/layer/layer.ext.js"></script>
+    <script src="lib/alertify/alertify.js"></script>
+    <script src="lib/sysmex/common.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/sysmex/caseDetail.js"></script>
+    <script src="lib/sysmex/locale.js"></script>
+  </head>
+  
+  <body>
+
+
+      <div class="container-fluid content" id="tabs-1">
+      </div>
+      <div class="container-fluid detail" id="tabs-2">
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row row-btn">
+        <div class="col-md-12">
+		  <a class="layerBtn fn-hide" id="editBtn"><span localeString="btn_edit">编辑</span></a>
+          <a class="layerBtn" id="returnBtn"><span localeString="btn_return">关闭</span></a>
+          <a class="layerBtn fn-hide" id="unqualifyBtn"><span localeString="btn_unqualify">不合格</span></a>
+          <a class="layerBtn fn-hide" id="qualifyBtn"><span localeString="btn_qualify">合格</span></a>
+        </div>
+      </div>
+
+  </body>
+
+
+<script id="trTmpl" type="text/x-jsrender">
+  <div class="row row-title c_toprocess">
+    <div class="col-md-12">
+          <span class="fn-left">流水号: {{:barcode}}</span>		  
+          <label class="fn-right">{{:diagnosestatus}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_samplenum">标本号码：</span>
+    </div>
+    <div class="col-md-4 content">
+      <label>{{:samplenum}}</label>
+    </div>
+    <div class="col-md-2 title">
+      <span localeString="lbl_testdate">送检日期：</span>
+    </div>
+    <div class="col-md-4 content">
+       <label>{{:testdateStr}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_patientname">患者姓名：</span>
+    </div>
+    <div class="col-md-4 content">
+      <label>{{:patientname}}</label>
+    </div>
+    <div class="col-md-2 title">
+      <span localeString="lbl_certificateno">证件号码：</span>
+    </div>
+    <div class="col-md-4 content">
+       <label>{{:certificateno}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_patientsex">病人性别：</span>
+    </div>
+    <div class="col-md-4 content">
+      <label>{{:patientsex}}</label>
+    </div>
+    <div class="col-md-2 title">
+      <span localeString="lbl_patientage">病人年龄：</span>
+    </div>
+    <div class="col-md-4 content">
+       <label>{{:patientage}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_patientphone">患者联系电话：</span>
+    </div>
+    <div class="col-md-4 content">
+      <label>{{:patientphone}}</label>
+    </div>
+	<div class="col-md-2 title">
+      <span localeString="lbl_sickpart">取材部位：</span>
+    </div>
+    <div class="col-md-4 content">
+       <label>{{:sickpart}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_hospname">送检医院：</span>
+    </div>
+    <div class="col-md-4 content">
+      <label>{{:hospname}}</label>
+    </div>
+    <div class="col-md-2 title">
+      <span localeString="lbl_clinicaldiagnosis">临床诊断：</span>
+    </div>
+    <div class="col-md-4 content">
+       <label>{{:clinicaldiagnosis}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_hospcontacts">送检医生：</span>
+    </div>
+    <div class="col-md-4 content">
+      <label>{{:hospcontacts}}</label>
+    </div>
+    <div class="col-md-2 title">
+      <span localeString="lbl_hospphone">送检医生电话：</span>
+    </div>
+    <div class="col-md-4 content">
+       <label>{{:hospphone}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_operationfindings">手术所见：</span>
+    </div>
+    <div class="col-md-10 content">
+      <label>{{:operationfindings}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_macroscopicdesc">巨检描述：</span>
+    </div>
+    <div class="col-md-10 content">
+      <label>{{:macroscopicdesc}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_lastdiagnoseinfo">原单位病理诊断：</span>
+    </div>
+    <div class="col-md-10 content">
+      <label>{{:lastdiagnoseinfo}}</label>
+    </div>
+  </div>
+  <div class="row row-info">
+    <div class="col-md-2 title">
+      <span localeString="lbl_diagy">病史：</span>
+    </div>
+    <div class="col-md-10 content">
+      <label>{{:diag}}</label>
+    </div>
+  </div>
+  <div class="row row-info fn-sepline">
+    <div class="col-md-2 title">
+      <span localeString="lbl_remark">备注：</span>
+    </div>
+    <div class="col-md-10 content">
+      <label>{{:remark}}</label>
+    </div>
+  </div>
+
+  <div class="row row-micro">
+    <!--div class="col-md-2 title">
+      <span>病理切片：</span>
+    </div>
+    <div class="col-md-10 content">
+       {{:microscopeList}}
+    </div-->
+  </div>
+</script>

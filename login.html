@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="lib/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/font/css/font-awesome.min.css">
+    <link href="lib/sysmex/common.css" rel="stylesheet">
+    <link href="lib/sysmex/login.css" rel="stylesheet">
+
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery-ui.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+
+    <script src="lib/sysmex/login.js"></script>
+	<script src="lib/sysmex/locale.js"></script>	
+    <title>医云病理登录</title>
+  </head>
+
+  <body>
+
+      <div class="row row-main">
+        <div class="lg">
+          <div class="loginform">
+            <div class="login-title" id="loginTil">
+              <span localeString="systitle">医云远程病理平台</span>
+            </div>
+            <div id="loginMsg" >
+              <i class="fa fa-times-circle fa-lg"></i>
+              <p id="error">请输入密码</p>
+            </div>
+            <div class="field">
+              <label> <i class="fa fa-user fa-2x"></i></label>
+              <input type="text" id="username" class="login-text">
+            </div>
+            <div class="field">
+              <label> <i class="fa fa-lock fa-2x"></i></label>
+              <input  id="password" type="password" class="login-text">
+            </div>
+            <div class="field-txt">
+              <a href="#" class="forget-pwd"><span localeString="btn_forgotpwd">忘记登录密码</span></a>
+              <a href="#" class="register">免费注册</a>
+              <div class="clear"></div>
+            </div>
+            <div class="field nospace">
+              <button type="submit" class="btn-login" id="btnLogin"><span localeString="btn_login">登　录</span></button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <div class="copyright">
+          <label >Copyright@Doctor Cloud CORPORATION</label>
+    </div>
+  </body>
+

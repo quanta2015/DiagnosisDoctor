@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>医云病理远程诊断系统</title>
+
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/sysmex/common.css" rel="stylesheet">
+    <link href="lib/sysmex/index.css" rel="stylesheet">    
+
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/sysmex/common.js"></script>
+    <script src="lib/sysmex/index.js"></script>
+	<script src="lib/sysmex/locale.js"></script>
+  </head>
+  
+  <body>
+      <div class="container-fluid bar">
+        <div class="row">
+          <div class="col-md-6 headerLogo">
+            <a id="imgLogo"></a>
+            <label>医云病理远程诊断系统</label>
+          </div>
+          <div class="col-md-6 bar-menu">
+            <ul>
+              <label id="username">XXX用户</label>
+              <label id="roles"></label>
+              <li class="menu" id="menu-center"><span localeString="btn_usercenter">用户中心</span></li>
+              <li class="menu" id="menu-logout"><span localeString="btn_quit">退出系统</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <iframe src="caseList.html" id="mainframe"></iframe>
+
+  </body>

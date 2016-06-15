@@ -1,0 +1,194 @@
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>医云病理远程诊断系统</title>
+    <link rel="stylesheet" href="lib/sysmex/slice.css" />
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css" >
+    <link rel="stylesheet" href="lib/leaflet/dist/font-awesome.css">
+    <link rel="stylesheet" href="lib/leaflet/dist/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="lib/leaflet/leaflet.css" /> 
+    
+    <link rel="stylesheet" href="lib/label/leaflet.label.css" />
+    <link rel="stylesheet" href="lib/layer/layer.css" />
+    <link rel="stylesheet" href="lib/layer/layer.ext.css" />
+    <link rel="stylesheet" href="lib/draw/leaflet.draw.css" />
+    <link rel="stylesheet" href="lib/minimap/Control.MiniMap.min.css" />
+    <link rel="stylesheet" href="lib/alertify/alertify.core.css">
+    <link rel="stylesheet" href="lib/alertify/alertify.default.css">
+    <link rel="stylesheet" href="lib/noty/buttons.css">
+    <link rel="stylesheet" href="lib/noty/animate.css">
+
+    <script src="lib/spin/spin.js"></script>
+    <script src="lib/leaflet/leaflet.js"></script>
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery-ui.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/sysmex/slice.js"></script>
+    <script src="lib/leaflet/dist/leaflet.awesome-markers.js"></script>
+    <script src="lib/label/leaflet.label.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="lib/canvas/base64.js"></script>
+    <script src="lib/canvas/leaflet-image.js"></script>
+    <script src="lib/json/json2.js"></script>
+    <script src="lib/alertify/alertify.js"></script>
+    <script src="lib/noty/jquery.noty.packaged.js"></script>
+    <script src="lib/camanjs/caman.full.js"></script>
+
+
+
+    <script src="lib/draw/Leaflet.draw.js"></script>
+    <script src="lib/draw/handler/Edit.Poly.js"></script>
+    <script src="lib/draw/handler/Edit.SimpleShape.js"></script>
+    <script src="lib/draw/handler/Edit.Circle.js"></script>
+    <script src="lib/draw/handler/Edit.Rectangle.js"></script>
+    <script src="lib/draw/handler/Draw.Feature.js"></script>
+    <script src="lib/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="lib/draw/handler/Draw.Rectangle.js"></script>
+    <script src="lib/draw/handler/Draw.Circle.js"></script>
+    <script src="lib/draw/handler/Draw.Marker.js"></script>
+    <script src="lib/draw/Tooltip.js"></script>
+    <script src="lib/draw/ext/LatLngUtil.js"></script>
+    <script src="lib/draw/ext/GeometryUtil.js"></script>
+    <script src="lib/draw/ext/LineUtil.Intersect.js"></script>
+    <script src="lib/draw/ext/Polyline.Intersect.js"></script>
+    <script src="lib/draw/ext/Polygon.Intersect.js"></script>
+    
+	
+    <script src="lib/minimap/Control.MiniMap.min.js"></script>
+	<script src="lib/sysmex/locale.js"></script>
+
+</head>
+<body>
+    <div class="tools">
+        <div class="tools-set" >
+            <div class="zoomBtn" id="0">x.3125</div>
+            <div class="zoomBtn" id="1">x.625</div>
+            <div class="zoomBtn" id="2">x1.25</div>
+            <div class="zoomBtn" id="3">x2.5</div>
+            <div class="zoomBtn" id="4">x5</div>
+            <div class="zoomBtn" id="5">x10</div>
+            <div class="zoomBtn" id="6">x20</div>
+
+            <div class="funBtn" id="exitBtn" name="退出程序(Exit Diagnosis)"></div>
+            <div class="funBtn" id="fullSreenBtn" name="全屏显示(Full Screen)"></div>
+            <div class="sepBtn"></div>
+            <div class="funBtn" id="saveBtn" name="保存标记(Save Markers)"></div>
+            <div class="funBtn" id="diagBtn" name="诊断(Write Diagnosis Report)"></div>
+            <div class="funBtn" id="cropperBtn" name="截图(Crop Image)"></div>
+            <div class="sepBtn"></div>
+            <div class="funBtn" id="markerBtn" name="位置标记(Point Marker)"></div>
+            <div class="funBtn" id="circleBtn" name="圆形标记(Circle Marker)"></div>
+            <div class="funBtn" id="rectangleBtn" name="矩形标记(Rectangle Marker)"></div>
+            <div id="minidisplay" class="miniShow" name="显示/关闭预览图(Toggle Preview)"></div>
+        </div>
+        <div id="mini">
+            <div id="miniLine"></div>
+        </div>
+
+    </div>
+
+    <div id="map" style="width: 100%; height: 100%"></div>
+    <div id="cropper"><i class="crop"></i></div>
+    <div id="cropBar"></div>
+    <div id="recordBar"></div>
+    <div id="cropBarTap" class="tapBar" name="弹出/关闭截图栏(Toggle Crop Bar)"></div>
+    <div id="recordBarTap" class="tapBar" name="弹出/关闭标签栏(Toggle Marker Bar)"></div>
+
+    <div class="layer_notice" >
+        <textarea rows="10" cols="20" id="noticeTxt"></textarea>
+        <a class="layerBtn bg-primary" id="notice"><span localeString="btn_ok">确 认</span></a>
+        <a class="layerBtn" id="cancel"><span localeString="btn_cancel">取 消</span></a>
+    </div>
+
+    <div class="layer_diag">
+        <div class="container-fluid">
+            <div class="row row-title">
+                <div class="col-md-12 col-title">诊断报告</div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_samplenum">标本号码：</span></div>
+                <div class="col-md-8 col-content" id="diagId"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_patientname">患者姓名：</span></div>
+                <div class="col-md-8 col-content" id="patientname"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_certificateno">证件号码：</span></div>
+                <div class="col-md-8 col-content" id="certificateno"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_patientsexage">性别/年龄：</span></div>
+                <div class="col-md-8 col-content" id="diagAgeSex"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_patientphone">患者联系电话：</span></div>
+                <div class="col-md-8 col-content" id="patientphone"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_hospname">送检医院：</span></div>
+                <div class="col-md-8 col-content" id="hospcontacts"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_hospcontacts">送检医生：</span></div>
+                <div class="col-md-8 col-content" id="hospname"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_hospphone">送检医生电话：</span></div>
+                <div class="col-md-8 col-content" id="hospphone"></div>
+            </div>
+			<div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_clinicaldiagnosis">临床诊断：</span></div>
+                <div class="col-md-8 col-content" id="clinicaldiagnosis"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_sickpart">取材部位：</span></div>
+                <div class="col-md-8 col-content" id="sickpart"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_operationfindings">手术所见：</span></div>
+                <div class="col-md-8 col-content" id="operationfindings"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_macroscopicdesc">巨检描述：</span></div>
+                <div class="col-md-8 col-content" id="macroscopicdesc"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_lastdiagnoseinfo">原单位病理诊断：</span></div>
+                <div class="col-md-8 col-content" id="lastdiagnoseinfo"></div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_diagy">病史：</span></div>
+                <div class="col-md-8 col-content" id="diagInfo">肠胃</div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-4 col-content"><span localeString="lbl_remark">备注：</span></div>
+                <div class="col-md-8 col-content" id="diagRemark">肠胃</div>
+            </div>
+			<div class="row row-micro">
+			<!--div class="col-md-2 title">
+			  在这里显示出附件列表
+			</div-->
+			</div>
+            <div class="row row-diag">
+                <div class="col-md-12 col-content"><span localeString="lbl_diagnoseresult">诊断结果：</span></div>
+                <div class="col-md-12 col-content">
+                    <textarea rows="10" id="diagTxt"></textarea>
+                </div>
+            </div>
+            <div class="row row-diag">
+                <div class="col-md-12 col-content">
+                    <a class="layerBtn bg-primary" id="notice"><span localeString="btn_ok">确 认</span></a>
+                    <a class="layerBtn" id="cancel"><span localeString="btn_cancel">取 消</span></a>
+                </div>
+            </div>
+            
+        
+        </div>
+    </div>
+
+    <div id="mask">
+    </div>
+    
+</body>
+</html>

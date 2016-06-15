@@ -1,0 +1,105 @@
+.result, .row-title {
+	margin: 0;
+	padding: 0;
+}
+
+.row {
+	padding: 0;
+	margin: 0;
+}
+
+.row-title {
+	background: #999;
+	height: 45px;
+	padding: 0;
+}
+
+.row-result {
+	background: #000;
+	height: 45px;
+	padding: 0;
+}
+
+.row-title  span, .row-result span{
+	margin: 10px 0 0 10px;
+	float: left;
+	font: 16px/1.5 "微软雅黑";
+	font-weight: 600;
+	color: #fff;
+}
+
+.col-result, .col-crop {
+	padding: 10px;
+}
+
+.col-result p, .col-crop p{
+	font:14px/1.8 "Microsoft yahei";
+	border-top: 1px solid #eee;
+	padding: 10px 10px 0 10px;
+	margin: 30px 0 0 0 ;
+	color: #999;
+}
+
+.col-result p:before, .col-crop p:before {
+	content: "诊断意见";
+	position: absolute;
+	top: 15px;
+	font: 16px/1 "Microsoft yahei";
+	color: #333;
+}
+
+.col-crop p:before {
+	content: "截图结果";
+}
+
+.col-crop li {
+	position: relative;
+	width: 120px;
+	height: 140px;
+	float: left;
+	margin: 10px 10px 0 10px;
+	*background: #eee;
+}
+
+.col-crop li img{
+	border: 1px solid #999;
+	display: block;
+	width: 118px;
+	height: 80px;
+	margin: 0px;
+	background: #eee;
+}
+
+.col-crop li span {
+    display: block;
+    margin: 5px;
+    font: 12px/1.2 "Microsoft yahei";
+}
+
+.row-input textarea {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.layerBtn {
+    background: #ff9900;
+    padding: 8px 40px;
+    margin: 0 20px;
+    font: 16px/2 "微软雅黑";
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+ }
+
+.row-btn {
+    padding: 0;
+    text-align: center;
+    margin: 0 0 50px 0;
+}
+
+.col-crop input {
+    position: absolute;
+    top: 2px;
+    left: 7px;
+}

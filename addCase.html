@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加病理</title>
+
+    <link href="lib/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/font/css/font-awesome.min.css" rel="stylesheet" >
+    <link href="lib/pagination/jquery.pagination.css" rel="stylesheet">
+    <link href="lib/layer/layer.css" rel="stylesheet" />
+    <link href="lib/layer/layer.ext.css" rel="stylesheet" />
+    <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
+    <link href="lib/sysmex/common.css" rel="stylesheet">
+    <link href="lib/sysmex/addCase.css" rel="stylesheet">
+
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery-ui.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/jsrender/jsrender.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="lib/md5/spark-md5.min.js"></script>
+    <script src="lib/alertify/alertify.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/sysmex/common.js"></script>
+    <script src="lib/sysmex/addCase.js"></script>
+    
+  </head>
+  
+  <body>
+    <div class="container-fluid step">
+      <div class="row">
+        <div class="col-md-4 step-cur"><span>1、填写病例资料</span></div>
+        <div class="col-md-4"><span>2、上传资料图片</span></div>
+        <div class="col-md-4"><span>3、上传切片数据</span></div>
+      </div>
+    </div>
+
+    <div class="container-fluid basic ">
+      <div class="row row-info">
+        <div class="col-md-2">
+          <span>标本号：</span>
+        </div>
+        <div class="col-md-4">
+          <i><input type="text" id="f_samplenum" class="textbox" placeholder="请输入标本号"></i>
+        </div>
+        <div class="col-md-2">
+          <span>送验日期：</span>
+        </div>
+        <div class="col-md-4">
+           <i><input type="text" id="f_testdate" class="textbox" placeholder="请选择检验日期"></i>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>患者姓名：</span>
+        </div>
+        <div class="col-md-4 input">
+            <i><input type="text" id="f_patientname" class="textbox fn-lwide" placeholder="请输入患者姓名"></i>
+        </div>
+        <div class="col-md-2 desc">
+          <span>证件号码：</span>
+        </div>
+        <div class="col-md-4 input">
+          <i><input type="text" id="f_certificateno" class="textbox fn-lwide" placeholder="请输入证件号码"></i>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>患者年龄：</span>
+        </div>
+        <div class="col-md-4 input">
+            <select id="nage"  class="form-control"></select>
+        </div>
+        <div class="col-md-2">
+          <span>患者性别：</span>
+        </div>
+        <div class="col-md-1 input">
+          <span><input type="radio" checked id="f_sex1" class="fieldRadio" name="radioSex" value="男">男</span><span><input type="radio"  id="f_sex2"  class="fieldRadio" name="radioSex" value="女">女</span>
+        </div>
+		<div class="col-md-1">
+          <span>国际会诊：</span>
+        </div>
+        <div class="col-md-1 input">
+          <input type="checkbox" id="f_internation" name="f_internation" class="fieldRadio" ></input>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2">
+          <span>患者联系电话：</span>
+        </div>
+        <div class="col-md-4 input">
+          <i><input type="text" id="f_patientphone" class="textbox fn-lwide" placeholder="请输入患者联系电话"></i>
+        </div>
+		<div class="col-md-2 desc">
+          <span>取材部位：</span>
+        </div>
+        <div class="col-md-4 input">
+          <select id="f_sickpart"  class="form-control"></select>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2">
+          <span>送检医院：</span>
+        </div>
+        <div class="col-md-4 input">
+          <i><input type="text" id="f_hospname" class="textbox fn-lwide" placeholder="请输入送检医院"></i>
+        </div>
+        <div class="col-md-2 desc">
+          <span>送检医生：</span>
+        </div>
+        <div class="col-md-4 input">
+            <i><input type="text" id="f_hospcontacts" class="textbox fn-lwide" placeholder="请输入送检医生"></i>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>临床诊断：</span>
+        </div>
+        <div class="col-md-4 input">
+            <i><input type="text" id="f_clinicaldiagnosis" class="textbox fn-lwide" placeholder="请输入临床诊断"></i>
+        </div>
+        <div class="col-md-2">
+          <span>送检医生电话：</span>
+        </div>
+        <div class="col-md-4 input">
+          <i><input type="text" id="f_hospphone" class="textbox fn-lwide" placeholder="请输入医生电话"></i>
+        </div>
+      </div>
+	  <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>病史：</span>
+        </div>
+        <div class="col-md-10 input">
+          <i><textarea rows="3" id="f_diag" class="textbox" placeholder="请输入病史"></textarea></i>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>手术所见：</span>
+        </div>
+        <div class="col-md-10 input">
+          <i><textarea rows="3" id="f_operationfindings" class="textbox" placeholder="请输入手术所见"></textarea></i>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>巨检描述：</span>
+        </div>
+        <div class="col-md-10 input">
+          <i><textarea rows="3" id="f_macroscopicdesc" class="textbox" placeholder="请输入巨检描述"></textarea></i>
+        </div>
+      </div>
+      <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>原单位病理诊断：</span>
+        </div>
+        <div class="col-md-10 input">
+          <i><textarea rows="3" id="f_lastdiagnoseinfo" class="textbox" placeholder="请输入原单位病理诊断"></textarea></i>
+        </div>
+      </div>
+      
+      <div class="row row-info">
+        <div class="col-md-2 desc">
+          <span>备注：</span>
+        </div>
+        <div class="col-md-10 input">
+          <i><textarea rows="3" id="f_remark" class="textbox" placeholder="请输入标本备注信息"></textarea></i>
+        </div>
+      </div>
+	  <!-- 动态增加病理号-->
+	  <div class="row row-info" id='divslicenumber'>
+        <div class="col-md-2 desc">
+          <span>病理编号：</span>
+        </div>
+        <div class="col-md-6 input">
+		  <i><input type="text" name="f_slicenumber" class="textbox fn-lwide" placeholder="请输入病理编号"></i>
+        </div>
+		<div class="col-md-4">
+            <!--li>添加病理编号</li-->
+			<button type="button" class="btn btn-primary" style="margin:5px" id="addSlicenumber">添加病理编号</button>            
+        </div>
+      </div>
+	  <!-- 动态增加病理号-->
+    </div>
+    <div class="container-fluid test fn-hide">
+      <div class="row row-scan">
+        <div class="col-md-2">
+          <span>资料图片：</span>
+        </div>
+        <div class="col-md-10">  
+          <li class="add-button"></li>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid scan fn-hide">
+      <div class="row row-scan">
+        <div class="col-md-2">
+          <span>病理切片：</span>
+        </div>
+        <div class="col-md-10">
+          
+          <li class="add-button"></li>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bar">
+		<div class="row row-info fn-hide"  id="autocommitdiv">
+			<div class="col-md-2">
+			  <span style="color:red">自动提交保存：</span>
+			</div>
+			<div class="col-md-1 input">
+			  <input type="checkbox" id="autocommit" name="autocommit" class="fieldRadio" ></input>
+			</div>
+		</div>
+      <div class="row row-btn">
+		<a class="layerBtn fn-hide" id="backStep">上一步</a>
+        <a class="layerBtn" id="toStep2">下一步</a>
+        <a class="layerBtn fn-hide" id="toStep3">下一步</a>
+        <a class="layerBtn fn-hide" id="saveBtn">保 存</a>
+      </div>
+    </div>
+
+    <div id="layer_upload" >
+      <div class="container-fluid">
+        <div class="row row-infotype">
+          <div class="col-md-3">
+            <span>资料类型：</span>
+          </div>
+          <div class="col-md-9">
+            <select id="infoType"  class="form-control">
+              <option value="X线">X线</option>
+              <option value="CT">CT</option>
+              <option value="MRI">MRI</option>
+              <option value="B超">B超</option>
+              <option value="化验">化验</option>
+              <option value="病理诊断报告单">病理诊断报告单</option>
+              <option value="其他有关检测">其他有关检测</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <span>上传文件：</span>
+          </div>
+          <div class="col-md-9">
+            <li><em>+</em>添加文件</li>
+            <input type="file" name="fileToUpload" id="uploadFile" multiple="multiple" />
+              <a id="fileName"></a>
+          </div>
+        </div>
+        <div class="row row-btn">
+          <a class="layerBtn" id="upload">上 传</a>
+          <a class="layerBtn" id="cancel">取 消</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="mask">
+      <div id="progLayer">
+        <div id="pgBar"></div>
+        <span id="pgInfo">aaa</span>
+        <ul class="pgList"></ul>
+      </div>
+    </div>
+        
+  
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><span localeString="html_title">病例清单</span></title>
+
+    <link href="lib/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/font/css/font-awesome.min.css" rel="stylesheet" >
+    <link href="lib/pagination/jquery.pagination.css" rel="stylesheet">
+    <link href="lib/layer/layer.css" rel="stylesheet" />
+    <link href="lib/layer/layer.ext.css" rel="stylesheet" />
+    <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
+    
+    <link href="lib/sysmex/caseList.css" rel="stylesheet">
+    <link href="lib/sysmex/common.css" rel="stylesheet">
+
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery-ui.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/jsrender/jsrender.js"></script>
+    <script src="lib/pagination/jquery.pagination.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="lib/layer/layer.ext.js"></script>
+    <script src="lib/alertify/alertify.min.js"></script>
+    <script src="lib/sysmex/common.js"></script>
+    <script src="lib/sysmex/caseList.js"></script>
+	<script src="lib/sysmex/locale.js"></script>
+    
+  </head>
+  
+  <body>
+      <div class="container-fluid search" style="min-width:1200px;">
+        <div class="row">
+          <div class="col-md-12 col-bar">
+            <ul>
+              <li class="m_btn" id="searchBtn">
+                搜  索
+              </li>
+              <li class="m_search lenSearch">
+                <input type="text" id="searchTxt" class="datebox " placeholder="请输入关键字">
+                <em class="sicon txt"></em>
+              </li>
+              <li class="m_todate lenDate">
+                <input type="text" value="2016-02-20" id="todate" class="datebox">
+                <em class="sicon cal"></em>
+              </li>
+              <li class="m_fromdate lenDate">
+                <input type="text" value="2015-12-20" id="fromdate" class="datebox">
+                <em class="sicon cal"></em>
+              </li>
+              <li class="m_type c_all" id="-1"><em class="fa fa-check"></em><span localeString="c_all">全部</span></li>
+              <li class="m_type c_toprocess" id="1"><em class="fa fa-check fn-invisibility" ></em><span localeString="c_toprocess">待处理</span><span class="nav-counter nav-counter-green"></span></li>
+              <li class="m_type c_topublish" id="2"><em class="fa fa-check fn-invisibility"></em><span localeString="c_toprocess">待发布</span><span class="nav-counter nav-counter-green"></span></li>
+              <li class="m_type c_unqualified" id="3"><em class="fa fa-check fn-invisibility"></em><span localeString="c_unqualified">不合格</span><span class="nav-counter"></span></li>
+              <li class="m_type c_todiagnoise" id="4"><em class="fa fa-check fn-invisibility"></em><span localeString="c_todiagnoise">待阅片</span><span class="nav-counter nav-counter-green"></span></li>
+              <li class="m_type c_return" id="5"><em class="fa fa-check fn-invisibility"></em><span localeString="c_return">退回</span><span class="nav-counter"></span></li>
+              <li class="m_type c_diagnoised" id="6"><em class="fa fa-check fn-invisibility"></em><span localeString="c_diagnoised">已阅片</span><span class="nav-counter nav-counter-blue"></span></li>
+              <li class="m_type c_finished" id="7"><em class="fa fa-check fn-invisibility"></em><span localeString="c_finished">已完成</span><span class="nav-counter nav-counter-blue"></span></li>
+              <li class="m_type c_evaluated" id="8"><em class="fa fa-check fn-invisibility"></em><span localeString="c_evaluated">已评价</span><span class="nav-counter nav-counter-blue"></span></li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+      <div class="container-fluid title">
+        <div class="row">
+          <div class="col-md-1 f_title">
+            <span localeString="tableheader_status">状态</span>
+          </div>
+          <div class="col-md-2 f_title">
+            <span localeString="tableheader_samplenum">标本号</span>
+          </div>
+		  <div class="col-md-1 f_title">
+            <span localeString="tableheader_patientname">病人姓名</span>
+          </div>
+		  <div class="col-md-1 f_title">
+            <span localeString="tableheader_patientage">病人年龄</span>
+          </div>
+		  <div class="col-md-1 f_title">
+            <span localeString="tableheader_sickpart">取材部位</span>
+          </div>
+          <div class="col-md-2 f_title">
+            <span localeString="tableheader_hospname">申请医院</span>
+          </div>
+          <div class="col-md-1 f_title">
+            <span localeString="tableheader_testdate">送检日期</span>
+          </div>
+          <div class="col-md-1 f_title">
+            <span localeString="tableheader_enddate">截至日期</span>
+          </div>
+          <div class="col-md-2 f_title">
+            <a id="addCaseBtn">添加病例</a>
+          </div>
+          
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div id="page" class="m-pagination">
+        </div>
+      </div>
+
+      <div id="layer_expert" >
+        <div class="container-fluid expert">
+        <div class="row row-title">
+          <div class="col-md-1">
+            <span localeString="tableheader_expertername">姓名</span>
+          </div>
+          <div class="col-md-3">
+            <span>单位</span>
+          </div>
+          <div class="col-md-2">
+            <span>职位/职称</span>
+          </div>
+          <div class="col-md-2">
+            <span>类型</span>
+          </div>
+          <div class="col-md-2">
+            <span>领域</span>
+          </div>
+          <div class="col-md-2">
+            <span>当前任务</span>
+
+          </div>
+        </div>
+        <ol id="selectable">
+
+        </ol>
+
+        <div class="row row-btn">
+          <li class="m_diagdate">
+            <input type="text" id="diagdate" class="diagdatebox">
+            <em class="sicon cal"></em>
+          </li>		  
+          <a class="layerBtn" id="cancel">取 消</a>
+          <a class="layerBtn" id="confim">确 定</a>
+        </div>
+
+      </div>
+        
+    </div>
+  </body>
+
+<script id="trTmpl" type="text/x-jsrender">
+  <div class="row row_content">
+    <div class="col-md-1 f_content">
+      <li class="m_type {{:statusClass}}">{{:diagnosestatusStr}}</li>
+    </div>
+    <div class="col-md-2 f_content">
+      <span>{{:samplenum}}</span>
+	  <span class="barcode fn-hide">{{:barcode}}</span>
+    </div>
+	<div class="col-md-1 f_content">
+      <span>{{:patientname}}</span>
+    </div>
+	<div class="col-md-1 f_content">
+      <span>{{:patientage}}</span>
+    </div>
+	<div class="col-md-1 f_content">
+      <span>{{:sickpart}}</span>
+    </div>
+    <div class="col-md-2 f_content">
+      <span>{{:hospname}}</span>
+    </div>
+    <div class="col-md-1 f_content">
+      <span>{{:testdateStr}}</span>
+    </div>
+    <div class="col-md-1 f_content">
+      <span>{{:enddate}}</span>
+    </div>
+    <div class="col-md-2 f_content">
+      {{:btnList}}
+    </div>
+	
+  </div>
+</script>
+
+<script id="expertTmpl" type="text/x-jsrender">
+  <div class="row row-content">
+    <div class="col-md-1" id="colId">
+      {{:name}}<em id="eid" class="fn-hide">{{:uid}}</em>
+    </div>
+    <div class="col-md-3">
+      {{:companyname}}
+    </div>
+    <div class="col-md-2">
+      {{:position}}/{{:title}}
+    </div>
+    <div class="col-md-2">
+      {{:type}}专家
+    </div>
+    <div class="col-md-2">
+      {{:field}}
+    </div>
+    <div class="col-md-2">
+      {{:countworking}}
+    </div>
+  </div>
+</script>
+

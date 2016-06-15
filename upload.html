@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>病理切片管理</title>
+    <link href="lib/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/font/css/font-awesome.min.css">
+    <link href="lib/layer/layer.css" rel="stylesheet" />
+    <link href="lib/layer/layer.ext.css" rel="stylesheet" />
+    <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
+    <link href="lib/slice/uploadList.css" rel="stylesheet">
+
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/jquery/jquery-ui.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/jsrender/jsrender.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script src="lib/md5/spark-md5.min.js"></script>
+    <script src="lib/alertify/alertify.js"></script>
+    <script src="lib/slice/common.js"></script>
+    <script src="lib/slice/uploadList.js"></script>
+  </head>
+  
+  <body>
+      <div class="container-fluid search">
+        <div class="row">
+          <div class="col-md-12">
+            <a id="addBtn">上传切片文件</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid content">
+        <div id="page" class="m-pagination"></div>
+      </div>
+
+      <div id="layer_upload" >
+        <div class="container-fluid">
+        <div class="row row-slice">
+          <div class="col-md-3 desc">
+            <span>条码编号：</span>
+          </div>
+          <div class="col-md-9 input">
+            <em id="barcode"></em>
+          </div>
+        </div>
+        <div class="row row-slice">
+          <div class="col-md-3 desc">
+            <span>切片描述：</span>
+          </div>
+          <div class="col-md-9 input">
+            <i><input type="text" id="sliceDesc" class="textbox fn-lwide" placeholder="请输入切片描述信息"></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 desc">
+            <span>上传文件：</span>
+          </div>
+          <div class="col-md-9 input">
+            <li><em>+</em>添加文件</li>
+            <input type="file" name="fileToUpload" id="uploadFile"/>
+            <a id="fileName"></a>
+          </div>
+        </div>
+        <div class="row">
+          <a class="layerBtn" id="upload">上 传</a>
+          <a class="layerBtn" id="cancel">取 消</a>
+        </div>
+      </div>
+        
+    </div>
+
+    <div id="mask">
+      <div id="progLayer">
+        <div id="pgBar"></div>
+        <span id="pgInfo">aaa</span>
+      </div>
+    </div>
+    
+  </body>
+
+<script id="trTmpl" type="text/x-jsrender">
+  <div class="row upfile">
+    <div class="col-md-1 upfile-img">
+      <a class="img">
+        <i class="img-status{{:filestatus}}"></i>
+      </a>
+    </div>
+    <div class="col-md-9 upfile-detail">
+      <ul>
+        <li class="slice-id">{{:sliceNumber}}</li>
+        <li class="slice-detail">
+          <span class="barcode">{{:barcode}}</span>
+          <span class="filename">{{:filename}}</span>
+          <span class="filesize">{{:filesize}}</span>
+          <span class="date">{{:fileuploadtimeStr}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2 upfile-process">
+      <li class="delete-case"></li>
+      <li class="upload-case display-status{{:filestatus}}"></li>
+    </div>
+  </div>
+</script>

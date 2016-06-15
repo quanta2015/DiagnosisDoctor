@@ -1,0 +1,175 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style:none;
+}
+
+a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.fn-right {
+	float: right;
+}
+
+.textbox {
+    padding: 6px 6px 6px 6px;
+    width: 100px;
+    outline: 0;
+    line-height: 15px;
+    border-style: none;
+}
+
+.userTable {
+    height: 100%;
+}
+
+.row-user {
+	height: 100%;
+	border-bottom: 1px solid #ccc; 
+}
+
+.row-title {
+	height: 100%;
+	height: 50px;
+	background: #339900;
+	border-bottom: 1px solid #ccc; 
+}
+
+.user-fn {
+	background: #fbfbfb;
+	height: 100%;
+	border-left: 1px solid #ccc; 
+	border-right: 1px solid #ccc; 
+	padding: 0;
+	margin: 0;
+}
+
+.menu {
+	position: relative;
+	height: 50px;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px dotted #ccc;
+	cursor: pointer;
+}
+
+.menu:hover {
+	background: #fff;
+}
+
+.menu label {
+	display: block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 20px;
+    top: 12px;
+}
+
+.menu span {
+	font: 13px/1.5 "微软雅黑";
+	display: block;
+	margin: 0px 0 0 50px;
+	padding: 0;
+	line-height: 50px;
+}
+
+.fn-pwd {
+	background: url("../../img/icon-user-pwd.png") no-repeat;
+}
+.fn-sig {
+	background: url("../../img/icon-user-sig.png") no-repeat;
+}
+.fn-info {
+	background: url("../../img/icon-user-info.png") no-repeat;
+}
+.fn-help {
+	background: url("../../img/icon-user-help.png") no-repeat;
+}
+.fn-phone {
+	background: url("../../img/icon-user-phone.png") no-repeat;
+}
+#fn-phone-ex {
+	line-height: 20px;
+	margin: 10px 0 0 50px;
+}
+
+.fieldname span {
+    float: right;
+}
+
+.fieldname {
+    position: relative;
+    float: left;
+    padding: 8px 0 0 0;
+    font: 16px/1.3 "microsoft yahei";
+    color: #999;
+}
+
+.fieldinput {
+    width: 300px;
+    font-size: 16px;
+    height: 36px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-family: tahoma,arial,sans-serif;
+}
+
+#fm-pwd {
+	margin: 20px 0 0 20px;
+	display: none;
+}
+
+#fm-info {
+	margin: 20px 0 0 20px;
+	*display: none;
+}
+
+#fm-sig {
+	margin: 20px 0 0 20px;
+	display: none;
+}
+
+.row-pwd {
+	margin: 10px 0 0 0;
+}
+
+.fieldbtn {
+    width: 160px;
+    height: 36px;
+    border: 0;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: #f40;
+    border-radius: 3px;
+    cursor: pointer;
+    zoom: 1;
+    margin: 15px 0 0 0;
+}
+
+.fieldbtnS {
+    width: 120px;
+    height: 36px;
+    border: 0;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: #f40;
+    border-radius: 3px;
+    cursor: pointer;
+    zoom: 1;
+    margin: 15px 10px 0 0;
+}

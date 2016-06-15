@@ -1,0 +1,66 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style:none;
+}
+
+a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.fn-right {
+	float: right;
+}
+
+.fn-left {
+	float: left;
+}
+
+.fn-hide {
+	display:none;
+}
+.fn-invisibility {
+	visibility:hidden;
+}
+
+
+
+.c_toprocess {
+	background: #99cc66;
+}
+
+.c_unqualified {
+	background: #cc9900;
+}
+
+.c_topublish {
+	background: #006666;
+}
+
+.c_todiagnoise {
+	background: #333399;
+}
+
+.c_diagnoised {
+	background: #cc66cc;
+}
+
+.c_return {
+	background: #ff6633
+}
+
+.c_finished {
+	background: #990066
+}
+
+.c_evaluated {
+	background: #ff3333;
+}
+
+.c_all {
+	background: #666666;
+}

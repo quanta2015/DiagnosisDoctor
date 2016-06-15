@@ -1,0 +1,486 @@
+body {
+    background: #666;
+    margin: 0;
+}
+
+li {
+    list-style:none;
+}
+
+#map {
+    background:#fff;
+}
+
+#layer {
+    border: solid 1px #666;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    top: 8px;
+    left: 8px;
+    background: #000;
+    display: none;
+    position: absolute;
+    z-index: 89999;
+    *filter:alpha(opacity=10);
+    opacity: 0.1;
+}
+
+#cropper {
+    display: none;
+    border: solid 3px #000;
+    width: 300px;
+    height: 200px;
+    margin: 5px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    *background: #eee;
+    z-index: 99999;
+    cursor: move;
+}
+
+.zoomBtn,.funBtn {
+    background: #fff;
+    width: 35px;
+    height: 35px;
+    margin: 5px 0px 5px 5px;
+    text-align: center;
+    font: 12px/3 arial;
+    cursor: pointer;
+    float: left;
+}
+
+.sepBtn {
+    background: #ccc;
+    width: 2px;
+    height: 35px;
+    margin: 5px 10px 5px 0px;
+    float: right;
+}
+
+.funBtn {
+    float: right;
+    margin: 5px 10px 5px 0px;
+}
+
+.zoomBtn:hover{
+    background: #ff9900;
+    color: #fff;
+}
+
+
+#exitBtn{
+    background: url("../../img/icon-exit-off.png") no-repeat;
+}
+#exitBtn:hover{
+    background: url("../../img/icon-exit-on.png") no-repeat;
+}
+#mongoBtn{
+    background: url("../../img/icon-mongo-off.png") no-repeat;
+}
+#mongoBtn:hover{
+    background: url("../../img/icon-mongo-on.png") no-repeat;
+}
+#saveBtn{
+    background: url("../../img/icon-save-off.png") no-repeat;
+}
+#saveBtn:hover{
+    background: url("../../img/icon-save-on.png") no-repeat;
+}
+#diagBtn{
+    background: url("../../img/icon-diag-off.png") no-repeat;
+}
+#diagBtn:hover{
+    background: url("../../img/icon-diag-on.png") no-repeat;
+}
+#cropperBtn{
+    background: url("../../img/icon-cropper-off.png") no-repeat;
+}
+#cropperBtn:hover{
+    background: url("../../img/icon-cropper-on.png") no-repeat;
+}
+#markerBtn{
+    background: url("../../img/icon-marker-off.png") no-repeat;
+}
+#markerBtn:hover  {
+    background: url("../../img/icon-marker-on.png") no-repeat;
+}
+#circleBtn{
+    background: url("../../img/icon-drawcircle-off.png") no-repeat;
+}
+#circleBtn:hover{
+    background: url("../../img/icon-drawcircle-on.png") no-repeat;
+}
+#rectangleBtn{
+    background: url("../../img/icon-drawrect-off.png") no-repeat;
+}
+#rectangleBtn:hover{
+    background: url("../../img/icon-drawrect-on.png") no-repeat;
+}
+#fullSreenBtn {
+    background: url("../../img/icon-fullscreen.png") no-repeat;
+}
+
+
+.tools {
+    height: 45px;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    z-index: 999999;
+}
+
+.tools-set {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(102, 102, 102,.5);
+    float: left;
+    margin: 0;
+    border: solid 1px #aaa;
+}
+
+
+.tools-img .cur {
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 40px;
+    height: 30px;
+    margin: 0;
+    border: solid 1px #ff9900;
+    pointer-events:none;
+}
+
+#miniLine {
+    height: 1px;
+    width: 1px;
+    background: #fff;
+    z-index: 999999;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+
+.markerBtn {
+    position: relative;
+    background: #666;
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    float: left;
+    color: #fff;
+    cursor: pointer;
+}
+
+.markerBtn .fa{
+    margin: 6px 0 0 6px;
+    display: block;
+}
+
+.markerBtn i {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    display: none;
+}
+
+.del {
+    right: -8px;
+    top: -8px;
+    background: url("../../img/icon-close.png") no-repeat;
+}
+
+.edit {
+    left: -8px;
+    top: -8px;
+    background: url("../../img/icon-edit.png") no-repeat;
+}
+
+.move {
+    left: -8px;
+    bottom: -8px;
+    background: url("../../img/icon-move.png") no-repeat;
+}
+
+.layer_notice {
+    float: left;
+    overflow: hidden;
+    background: #efefef;
+    padding: 10px;
+    display: none;
+}
+
+.layer_notice textarea{
+    width: 100%;
+    outline: 0;
+}
+
+.layerBtn {
+    width: 80px;
+    height: 32px;
+    background-color: #aaa;
+    float: right;
+    margin: 10px 10px 0 0;
+    font: 16px/2 "微软雅黑";
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    color: fff;
+    border-radius: 3px;
+}
+
+.layerBtn:hover {
+    color: #fff;
+}
+
+
+#cropper i {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.crop {
+    right: -12px;
+    top: -12px;
+    background: url("../../img/icon-crop.png") no-repeat;
+}
+
+#recordBar {
+    position: absolute;
+    bottom: 1px;
+    left:10px;
+    *right: 0;
+    background: #eee;
+    height: 40px;
+    filter:alpha(opacity=90);
+    opacity: 0.9;
+    border: solid 1px #aaa;
+}
+
+#cropBar {
+    position: absolute;
+    bottom: 50px;
+    left:10px;
+    *right: 0;
+    background: #eee;
+    height: 110px;
+    filter:alpha(opacity=90);
+    opacity: 0.9;
+    border: solid 1px #aaa;
+}
+
+#cropBar .cropperBtn {
+    margin: 4px;
+    position: relative;
+    float: left;
+    cursor: pointer;
+}
+
+#cropBar i {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    right: -8px;
+    top: -8px;
+    display: none;
+}
+
+#cropBar img{
+    margin: 0;
+    border: solid 1px #666;
+    max-height:100px;
+}
+
+#cropBarTap {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 10px;
+    background: #cc6600;
+    height: 110px;
+    border: solid 1px #aaa;
+    border-left: 0;
+    border-right: 0;
+    cursor: pointer;
+}
+
+#cropBarTap:hover {
+    background: #ff9900;
+}
+
+#recordBarTap {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    width: 10px;
+    background: #009933;
+    height: 40px;
+    border: solid 1px #aaa;
+    border-left: 0;
+    border-right: 0;
+    cursor: pointer;
+}
+
+#recordBarTap:hover {
+    background: #00cc33;
+}
+
+#fa-circle {
+    width: 20px;
+    height: 20px;
+    left: 5px;
+    top: 5px;
+    display: block;
+    background: url("../../img/icon-bar-circle.png") no-repeat;
+}
+#fa-rectangle {
+    width: 20px;
+    height: 20px;
+    left: 5px;
+    top: 5px;
+    display: block;
+    background: url("../../img/icon-bar-rectangle.png") no-repeat;
+}
+#fa-marker {
+    width: 20px;
+    height: 20px;
+    left: 5px;
+    top: 5px;
+    display: block;
+    background: url("../../img/icon-bar-marker.png") no-repeat;
+}
+
+
+#mini {
+    position: relative;
+    display: block;
+    float: right;
+    background: #fff;
+    margin: 5px 0;
+    border: solid 1px #aaa;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+#minidisplay{
+    width: 20px;
+    height: 20px;
+    background: #666;
+    position: absolute;
+    bottom:-25;
+    right: 0;
+    z-index: 9999999;
+    cursor: pointer;
+}
+
+.miniHide::before {
+    content: "<<";
+    color: #fff;
+    font: 14px/1.5 "Serif";
+    margin: 0 0 0 2px;
+}
+
+.miniShow::before {
+    content: ">>";
+    color: #fff;
+    font: 14px/1.5 "Serif";
+    margin: 0 0 0 2px;
+}
+
+
+.imgshow {
+    position: absolute;
+    z-index: 999999;
+    border: 1px solid #666;
+}
+
+.layer_diag {
+    position: absolute;
+    width: 800px;
+    overflow-y: auto;
+    overflow-x:hidden;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #666;
+    left: 10px;
+    top: 10px;
+    z-index: 999999;
+    margin: 0;
+    padding: 0 0 10px 0;
+    display: none;
+    max-height: 100%;
+}
+
+.row-title {
+    background: #efefef;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.row-content {
+    background: #fff;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.col-title {
+    padding: 12px 0 0 10px;
+    font: 16px/1 "Microsoft YaHei";
+}
+
+.col-content {
+    padding: 12px 0 0 10px;
+    font: 14px/1 "Microsoft YaHei";
+}
+
+.col-mark {
+    padding: 18px 0 0 10px;
+    margin: 0 0 5px 0;
+    border-bottom: 1px solid #ddd;
+    font: 16px/1 "Microsoft YaHei";
+}
+
+.layer_diag textarea{
+    width: 680px;
+    outline: 0;
+}
+
+
+
+#mask {
+    position: absolute;
+    z-index: 999999;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    height: 45px;
+    *filter:alpha(opacity=10);
+    opacity: 0.5;
+    display:none;
+    background: #000;
+}
+
+.fn-hide {
+    display: none;
+}
+
+.layer_diag #return {
+    background: #ff3300;
+    color: #fff;
+}
+
+.layer_diag .col-content {
+    padding: 5px 0px 5px 15px;
+}
