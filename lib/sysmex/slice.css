@@ -69,7 +69,12 @@ li {
     color: #fff;
 }
 
-
+#sliceBtn{
+    background: url("../../img/icon-list-off.png") no-repeat;
+}
+#sliceBtn:hover{
+    background: url("../../img/icon-list-on.png") no-repeat;
+}
 #exitBtn{
     background: url("../../img/icon-exit-off.png") no-repeat;
 }
@@ -124,12 +129,12 @@ li {
 
 
 .tools {
-    height: 45px;
     left: 10px;
     right: 10px;
     top: 10px;
     position: absolute;
     z-index: 999999;
+    height: 47px;
 }
 
 .tools-set {
@@ -365,7 +370,7 @@ li {
 #mini {
     position: relative;
     display: block;
-    float: right;
+    float: left;
     background: #fff;
     margin: 5px 0;
     border: solid 1px #aaa;
@@ -379,8 +384,8 @@ li {
     height: 20px;
     background: #666;
     position: absolute;
-    bottom:-25;
-    right: 0;
+    top:52px;
+    left: 0;
     z-index: 9999999;
     cursor: pointer;
 }
@@ -483,4 +488,22 @@ li {
 
 .layer_diag .col-content {
     padding: 5px 0px 5px 15px;
+}
+
+#sliceList {
+    width: 200px;
+    border: 1px solid #aaa;
+    display: block;
+    float: right;
+    position: absolute;
+    top: 51px;
+    right: 0px;
+    background: rgba(120,120,120,.4);
+    z-index: 99999999;
+}
+
+#sliceList  img {
+    width: 190px;
+    border: 1px solid #999;
+    margin: 5px;
 }
