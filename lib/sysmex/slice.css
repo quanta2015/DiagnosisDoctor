@@ -170,6 +170,18 @@ li {
 }
 
 
+#mini g:before {
+    content: "aa";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ff0000;
+    z-index: 99999999999;
+    top:5px;
+    left:5px;
+}
+
+
 
 .markerBtn {
     position: relative;
@@ -506,4 +518,8 @@ li {
     width: 190px;
     border: 1px solid #999;
     margin: 5px;
+}
+
+#sliceList  img:hover {
+    border: 1px solid #ff6600;
 }
